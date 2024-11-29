@@ -16,7 +16,7 @@ class ChatBotService {
     this.model = new ChatOpenAI({
         temperature: 0.2,
         openAIApiKey: process.env.OPENAI_API_KEY,
-        modelName: "gpt-3.5-turbo", // or "gpt-3.5-turbo"
+        modelName: "gpt-3.5-turbo", 
       });
   }
 
@@ -35,9 +35,9 @@ class ChatBotService {
         // Access the collection directly from the Mongoose connection
         this.collection = this.client.connection.collection("sites");
 
-        // Initialize embeddings (make sure you have defined this.embeddings)
+        // Initialize embeddings 
         this.embeddings = new OpenAIEmbeddings({
-            openAIApiKey: process.env.OPENAI_API_KEY, // Ensure this is set in your .env file
+            openAIApiKey: process.env.OPENAI_API_KEY,
         });
 
         // Initialize the vector store
