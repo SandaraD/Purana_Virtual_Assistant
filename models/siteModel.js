@@ -1,28 +1,41 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-const siteSchema = new Schema({
+const siteSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
     },
     location: {
-        type: String,
-        required: true
-    },
-    size: {
-        type: Number,
-        required: true
+      type: {
+        type: String, 
+        enum: ["Point"],
+        required: true,
+      },
+      coordinates: {
+        type: [Number], 
+        required: true,
+      },
     },
     description: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     images: {
-        type: [String],
-        required: true
-    }
-},{ timestamps: true })
+      type: [String],
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Site', siteSchema)
+
+siteSchema.index({ location: "2dsphere" });
+
+module.exports = mongoose.model("Site", siteSchema);
