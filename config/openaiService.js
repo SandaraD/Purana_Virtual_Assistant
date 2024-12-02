@@ -48,7 +48,7 @@ class ChatBotService {
                 indexName: "default",
                 textKey: "description",
                 embeddingKey: "embedding",
-                fields: ["name", "location", "description"],
+                fields: ["name", "location", "city", "description"],
             }
         );
 
